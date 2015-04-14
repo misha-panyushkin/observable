@@ -8,7 +8,7 @@ function Knot (props) {
 		return;
 	}
 
-	this.val = {};
+	this.val = new KnotValueClass();
 	this.createObservableNodeProperty();
 	this.createNodeFromRaw(this.raw);
 }

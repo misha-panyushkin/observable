@@ -18,7 +18,7 @@ Node.prototype.createNodeFromRaw = function (raw) {
 		switch (this.getNodeRawType(raw[p])) {
 			case 'knot':
 				new Knot({
-					raw: raw,
+					raw: raw[p],
 					super: this,
 					name: p
 				});
@@ -124,6 +124,7 @@ Node.prototype.setNodeValue = function (val) {
 };
 
 Node.prototype.createObservableNodeProperty = function () {
+	debugger;
 	Object.defineProperty(this.super.val || this.super, this.name, {
 		get: this.getNodeValue.bind(this),
 		set: this.setNodeValue.bind(this),

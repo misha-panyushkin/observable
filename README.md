@@ -17,7 +17,7 @@ var original_object = {...};
 ```
 
 ```
-var observable_object = Observable(original_object);
+var observable_object = Observe(original_object, handler);
 ```
 
 ```

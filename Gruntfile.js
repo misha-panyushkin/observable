@@ -32,10 +32,16 @@ module.exports = function (grunt) {
 
                 src: [
                     'src/ObservableObjectClass.js',
-                    'src/NodeClass.js',
+
                     'src/NodeEventClass.js',
+                    
+                    'src/NodeValueClass.js',
+                    'src/KnotValueClass.js',
+
+                    'src/NodeClass.js',
                     'src/KnotClass.js',
                     'src/LeafClass.js',
+
                     'src/app.js'
                 ],
                 dest: 'dist/Observable.js'

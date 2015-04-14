@@ -1,5 +1,6 @@
-function Observable (raw) {
+function Observe (raw) {
+	debugger;
 	return new ObservableObject(raw);
 }
 
-(c || window).Observable = Observable;
+(c || window).Observe = Observe;

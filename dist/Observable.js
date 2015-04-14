@@ -16,6 +16,24 @@
     };
 
 
+    function NodeEvent (props) {
+    	for (var p in props) if (props.hasOwnProperty(p)) {
+    		this[p] = props[p];
+    	}
+    	this.time = +new Date;
+    };
+
+
+    function NodeValueClass () {}
+
+
+    function KnotValueClass () {
+    	NodeValueClass.call(this);
+    }
+    
+    KnotValueClass.prototype = Object.create(NodeValueClass.prototype);
+
+
     function Node () {}
     
     Node.prototype = Object.create(ObservableObject.prototype);
@@ -36,7 +54,7 @@
     		switch (this.getNodeRawType(raw[p])) {
     			case 'knot':
     				new Knot({
-    					raw: raw,
+    					raw: raw[p],
     					super: this,
     					name: p
     				});
@@ -142,19 +160,12 @@
     };
     
     Node.prototype.createObservableNodeProperty = function () {
+    	debugger;
     	Object.defineProperty(this.super.val || this.super, this.name, {
     		get: this.getNodeValue.bind(this),
     		set: this.setNodeValue.bind(this),
     		configurable: 1
     	});
-    };
-
-
-    function NodeEvent (props) {
-    	for (var p in props) if (props.hasOwnProperty(p)) {
-    		this[p] = props[p];
-    	}
-    	this.time = +new Date;
     };
 
 
@@ -168,7 +179,7 @@
     		return;
     	}
     
-    	this.val = {};
+    	this.val = new KnotValueClass();
     	this.createObservableNodeProperty();
     	this.createNodeFromRaw(this.raw);
     }
@@ -201,10 +212,11 @@
     };
 
 
-    function Observable (raw) {
+    function Observe (raw) {
+    	debugger;
     	return new ObservableObject(raw);
     }
     
-    (c || window).Observable = Observable;
+    (c || window).Observe = Observe;
 
 } (this, this);
